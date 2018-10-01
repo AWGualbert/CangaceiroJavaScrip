@@ -1,6 +1,7 @@
 class NegociacaoController {
 
 	constructor(){
+
 		//a ideia é que $ seja o querySelector :D
 		let $ = document.querySelector.bind(document);
 		this._inputData = $('#data');
@@ -16,45 +17,25 @@ class NegociacaoController {
 		event.preventDefault();
 
 		//o constructor esta recebendo uma string. Será que funciona?
-		// agora o Date recebe um array
-		let data = new Date(this._inputData.value.split('-'));
-		console.log(data);
+		// usamos os famosos três pontinhos!
+		let data = new Date(...this._inputData
+			.value.split('-')
+			.map((item, indice) => item - indice % 2)
+			//function(){} é substituido por =>
+		);
 
-		//verificando o tipo
-		//console.log(typeof(this._inputData.value));
-
-		/*let negociacao = new Negociacao(
-			this._inputData.value,
+		let negociacao = new Negociacao(
+			data,
 			parseInt(this._inputQuantidade.value),
 			parseFloat(this._inputValor.value)
 		);
-		
-		console.log(negociacao);
-*/
+
+		let diaMesAno = negociacao.data.getDate()
+		+ '/' + (negociacao.data.getMonth() + 1)
+		+ '/' + negociacao.data.getFullYear();
+
+		console.log(diaMesAno);
+
 	}
 }
-/*
-function $_(element, unique = false) {
-	if ( element.str('#') )
-	{
-		return document.getElementById(element);
-	} else {
-		if ( true === unique ) {
-			return document.querySelector(element);
-		}
-		return Array.from(document.querySelectorAll(element)).forEach((element) => {
-			console.log(as);
-			element.addEventListener('click', (e) => {
 
-			});
-		});
-	}	
-}
-
-$('.as').click(function(e) {
-
-})
-
-let as = document.querySelectorAll(element);
-for ( let i=0; i < as.lenght-1; i++ ) { as[i].addEventListener }
-*/
