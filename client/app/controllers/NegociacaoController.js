@@ -33,6 +33,9 @@ class NegociacaoController {
 		this._inputData.focus();
 	}
 
+
+
+
 	_criaNegociacao() {
 		//retorna uma instância de nogociação
 		return new Negociacao(
