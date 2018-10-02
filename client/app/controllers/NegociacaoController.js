@@ -16,26 +16,20 @@ class NegociacaoController {
 		// cancelando a submissão do formulário
 		event.preventDefault();
 
-		//o constructor esta recebendo uma string. Será que funciona?
-		// usamos os famosos três pontinhos!
-		let data = new Date(...this._inputData
-			.value.split('-')
-			.map((item, indice) => item - indice % 2)
-			//function(){} é substituido por =>
-		);
-
-		let negociacao = new Negociacao(
-			data,
+		//Chamando o método estático
+			let negociacao = new Negociacao(
+			DateConverter.paraData(this._inputData.value),
 			parseInt(this._inputQuantidade.value),
 			parseFloat(this._inputValor.value)
 		);
 
-		let diaMesAno = negociacao.data.getDate()
-		+ '/' + (negociacao.data.getMonth() + 1)
-		+ '/' + negociacao.data.getFullYear();
+		console.log(negociacao.data);
 
+		//Chamando o método estático
+		let diaMesAno = DateConverter.paraTexto(negociacao.data);
 		console.log(diaMesAno);
 
+		
 	}
 }
 
