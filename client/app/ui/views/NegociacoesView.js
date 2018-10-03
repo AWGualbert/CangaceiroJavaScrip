@@ -21,24 +21,29 @@ class NegociacoesView {
                 <th>VOLUME</th>
             </tr>
         </thead>
+
         <tbody>
-        ${model.paraArray().map(negociacao => {
+        ${model.paraArray().map(negociacao => 
             // precisa converter antes de retornar!
-            return `
+            `
             <tr>
                 <td>${DateConverter.paraTexto(negociacao.data)}</td>
                 <td>${negociacao.quantidade}</td>
                 <td>${negociacao.valor}</td>
                 <td>${negociacao.volume}</td>
             </tr>
+            `   
 
-            `
-            
-
-        }).join('')}
+        ).join('')}//usando join para concatenar todos os alementos 
         </tbody>
+
         <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td>${model.volumeTotal}</td>
+            </tr>
         </tfoot>
+        
     </table>                                                            
     `
     }
