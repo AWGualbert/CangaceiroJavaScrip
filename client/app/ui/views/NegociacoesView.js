@@ -34,7 +34,7 @@ class NegociacoesView {
             </tr>
             `   
 
-        ).join('')}//usando join para concatenar todos os alementos 
+        ).join('')}<!--usando join para concatenar todos os alementos -->
         </tbody>
 
         <tfoot>
